@@ -1,0 +1,6 @@
+{
+  "name": "fe",
+  "description": "Frontend development tasks using React, Next.js, and Tailwind CSS",
+  "agent": "frontend-dev-expert",
+  "invokeWithPrompt": true
+}

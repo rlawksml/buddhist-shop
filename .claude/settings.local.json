@@ -1,0 +1,26 @@
+{
+  "workingDirectory": ".",
+  "mcpServers": {},
+  "allowedCommands": [],
+  "ui": {
+    "theme": "auto"
+  },
+  "ai": {
+    "model": "claude-sonnet-4-5",
+    "temperature": 0.7
+  },
+  "editor": {
+    "defaultEditor": "code"
+  },
+    "permissions": {
+    "allow": [
+      "Bash(gh:*)",
+      "Bash(git:*)",
+      "Bash(git:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(cd:*)"
+    ]
+  }
+}

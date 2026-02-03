@@ -1,0 +1,5 @@
+{
+  "name": "be",
+  "description": "Backend development tasks including API routes, authentication, and business logic",
+  "invokeWithPrompt": true
+}

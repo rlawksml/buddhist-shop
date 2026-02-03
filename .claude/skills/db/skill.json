@@ -1,0 +1,5 @@
+{
+  "name": "db",
+  "description": "Database design, schema management, and query optimization",
+  "invokeWithPrompt": true
+}

@@ -11,59 +11,43 @@ export default function BoardPage() {
   ])
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">게시판</h1>
-        <button className="bg-amber-600 text-white px-6 py-2 rounded-md hover:bg-amber-700">
+    <div className="py-12">
+      <div className="flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
+        <h1 className="text-2xl font-semibold text-black tracking-tight">게시판</h1>
+        <button className="text-sm text-black hover:text-gray-600 transition-colors font-medium underline">
           글쓰기
         </button>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                번호
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                제목
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                작성자
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                작성일
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                조회수
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {posts.map((post) => (
-              <tr key={post.id} className="hover:bg-gray-50 cursor-pointer">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{post.id}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{post.title}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{post.author}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{post.date}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{post.views}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="border-t border-gray-200">
+        {posts.map((post) => (
+          <div key={post.id} className="border-b border-gray-200 py-5 hover:bg-gray-50 cursor-pointer transition-colors group">
+            <div className="flex items-start justify-between">
+              <div className="flex-1">
+                <h3 className="text-base font-normal text-black mb-2 group-hover:underline">{post.title}</h3>
+                <div className="flex items-center gap-3 text-xs text-gray-500">
+                  <span>{post.author}</span>
+                  <span>·</span>
+                  <span>{post.date}</span>
+                  <span>·</span>
+                  <span>조회 {post.views}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className="mt-6 flex justify-center">
-        <nav className="flex space-x-2">
-          <button className="px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+      <div className="flex justify-center mt-12">
+        <nav className="flex gap-2">
+          <button className="px-3 py-1 text-sm font-normal text-gray-500 hover:text-black transition-colors">
             이전
           </button>
-          <button className="px-4 py-2 bg-amber-600 text-white rounded-md">1</button>
-          <button className="px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+          <button className="px-3 py-1 text-sm font-medium text-black underline">1</button>
+          <button className="px-3 py-1 text-sm font-normal text-gray-500 hover:text-black transition-colors">
             2
           </button>
-          <button className="px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+          <button className="px-3 py-1 text-sm font-normal text-gray-500 hover:text-black transition-colors">
             다음
           </button>
         </nav>

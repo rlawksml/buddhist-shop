@@ -22,17 +22,20 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+    <div className="min-h-[calc(100vh-14rem)] flex items-center justify-center py-12">
+      <div className="max-w-sm w-full">
+        <div className="mb-10">
+          <h2 className="text-center text-2xl font-semibold text-black tracking-tight mb-2">
             회원가입
           </h2>
+          <p className="text-center text-sm text-gray-500 font-light">
+            새로운 계정 만들기
+          </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm space-y-4">
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="name" className="block text-sm font-normal text-gray-700 mb-2">
                 이름
               </label>
               <input
@@ -40,14 +43,14 @@ export default function RegisterPage() {
                 name="name"
                 type="text"
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
-                placeholder="이름을 입력하세요"
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all"
+                placeholder="홍길동"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-normal text-gray-700 mb-2">
                 이메일
               </label>
               <input
@@ -55,14 +58,14 @@ export default function RegisterPage() {
                 name="email"
                 type="email"
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
-                placeholder="이메일을 입력하세요"
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all"
+                placeholder="name@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="phone" className="block text-sm font-normal text-gray-700 mb-2">
                 전화번호
               </label>
               <input
@@ -70,14 +73,14 @@ export default function RegisterPage() {
                 name="phone"
                 type="tel"
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all"
                 placeholder="010-1234-5678"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-normal text-gray-700 mb-2">
                 비밀번호
               </label>
               <input
@@ -85,14 +88,14 @@ export default function RegisterPage() {
                 name="password"
                 type="password"
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
-                placeholder="비밀번호를 입력하세요"
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all"
+                placeholder="••••••••"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               />
             </div>
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="confirmPassword" className="block text-sm font-normal text-gray-700 mb-2">
                 비밀번호 확인
               </label>
               <input
@@ -100,8 +103,8 @@ export default function RegisterPage() {
                 name="confirmPassword"
                 type="password"
                 required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-amber-500 focus:border-amber-500"
-                placeholder="비밀번호를 다시 입력하세요"
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all"
+                placeholder="••••••••"
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
               />
@@ -111,15 +114,15 @@ export default function RegisterPage() {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+              className="w-full flex justify-center py-3 px-4 border border-black text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none transition-all"
             >
               회원가입
             </button>
           </div>
 
-          <div className="text-center">
-            <span className="text-sm text-gray-600">이미 계정이 있으신가요? </span>
-            <a href="/login" className="text-sm font-medium text-amber-600 hover:text-amber-500">
+          <div className="text-center text-sm pt-6">
+            <span className="text-gray-600 font-light">이미 계정이 있으신가요? </span>
+            <a href="/login" className="font-medium text-black hover:text-gray-600 transition-colors underline">
               로그인
             </a>
           </div>

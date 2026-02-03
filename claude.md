@@ -35,6 +35,26 @@ buddhist-shop/
 3. **게시판**: 사용자 소통 공간
 4. **로그인/회원가입**: 사용자 인증 시스템
 
+## Claude Agent 사용 가이드
+이 프로젝트는 효율적인 개발을 위해 특화된 agent를 사용합니다.
+
+### Frontend 작업 시
+- **Agent**: `frontend-dev-expert`
+- **사용 시점**:
+  - React/Next.js 컴포넌트 개발
+  - UI/UX 구현 및 디자인
+  - Tailwind CSS 스타일링
+  - 상태 관리 (useState, useEffect 등)
+  - API 연동 및 데이터 fetching
+  - 프론트엔드 성능 최적화
+- **사용 방법**: 작업 요청 시 "frontend-dev-expert agent를 사용해서..." 라고 명시
+
+### Agent 활용 예시
+```
+"frontend-dev-expert agent를 사용해서 상품 상세 페이지 컴포넌트를 만들어줘"
+"frontend-dev-expert로 장바구니 기능을 구현해줘"
+```
+
 ## 개발 명령어
 ```bash
 # 개발 서버 실행
