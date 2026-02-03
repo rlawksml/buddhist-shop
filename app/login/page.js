@@ -1,17 +1,49 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function LoginPage() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('로그인:', formData)
-    // 로그인 로직 구현 필요
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        // 토큰을 localStorage에 저장
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('user', JSON.stringify(data.user))
+
+        // 메인 페이지로 리다이렉트
+        router.push('/')
+      } else {
+        setError(data.error || '로그인에 실패했습니다.')
+      }
+    } catch (err) {
+      setError('로그인 중 오류가 발생했습니다.')
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -25,6 +57,13 @@ export default function LoginPage() {
             불교용품 쇼핑몰
           </p>
         </div>
+
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <p className="text-sm text-red-600">{error}</p>
+          </div>
+        )}
+
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
@@ -36,7 +75,8 @@ export default function LoginPage() {
                 name="email"
                 type="email"
                 required
-                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all"
+                disabled={loading}
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="name@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -51,7 +91,8 @@ export default function LoginPage() {
                 name="password"
                 type="password"
                 required
-                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all"
+                disabled={loading}
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 text-sm focus:outline-none focus:border-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -82,9 +123,10 @@ export default function LoginPage() {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-black text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none transition-all"
+              disabled={loading}
+              className="w-full flex justify-center items-center py-3 px-4 border border-black text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              로그인
+              {loading ? '로그인 중...' : '로그인'}
             </button>
           </div>
 
